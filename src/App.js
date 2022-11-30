@@ -26,6 +26,7 @@ const App = () => {
     const addExpenseHandler = (expenseData) => {
         console.log(expenseData);
     }
+
     return (
         <div>
             <h2>Let's get going!</h2>
