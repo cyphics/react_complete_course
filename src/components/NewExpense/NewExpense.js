@@ -20,8 +20,8 @@ const NewExpense = (props) => {
     if (!showForm) {
         return (
           <div className={"new-expense"}>
-              <div className={"new-expense__actions"}>
-                  <button onClick={toggleShowForm}>Add Expense</button>
+              <div className={"new-expense__new"}>
+                  <button onClick={toggleShowForm}>Add New Expense</button>
               </div>
           </div>
         )
