@@ -1,44 +1,30 @@
-import Expenses from "./components/Expenses/Expenses";
-import NewExpense from "./components/NewExpense/NewExpense";
-import {useState} from "react";
-
-const INITIAL_EXPENSES = [
-    {
-        id: 'e1',
-        title: 'Toilet Paper',
-        amount: 94.12,
-        date: new Date(2020, 7, 14),
-    },
-    {id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12)},
-    {
-        id: 'e3',
-        title: 'Car Insurance',
-        amount: 294.67,
-        date: new Date(2021, 2, 28),
-    },
-    {
-        id: 'e4',
-        title: 'New Desk (Wooden)',
-        amount: 450,
-        date: new Date(2021, 5, 12),
-    },
-];
+import './index.css'
+import NavBar from "./Navbar";
+import Tasks from "./Tasks/Tasks";
 
 const App = () => {
-    const [expenses, setExpenses] = useState(INITIAL_EXPENSES)
-
-    const addExpenseHandler = (newExpense) => {
-        setExpenses(prevExpenses => {
-            return [newExpense, ...prevExpenses];
-        });
+    // const [page, setPage] = useState('tasks');
+    const pageSelectionHandler = () => {
+        // setPage(newPage)
+        // console.log(newPage)
     }
+    // let content;
+    // switch (page) {
+    //     case 'tasks':
+    //         content = <div><h1>Tasks</h1></div>
+    //         break;
+    //     case 'expenses':
+    //         content = <ExpensesApp/>
+    //         break;
+    // }
 
-    return (
-        <div>
-            <NewExpense onAddExpense={addExpenseHandler}></NewExpense>
-            <Expenses expensesList={expenses}></Expenses>
-        </div>
-    );
+    return(
+      <div>
+          <NavBar selector={pageSelectionHandler}/>
+          {/*<ExpensesApp></ExpensesApp>*/}
+          <Tasks></Tasks>
+      </div>
+    )
 }
 
 export default App;
