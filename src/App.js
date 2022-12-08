@@ -1,13 +1,8 @@
 import './index.css'
-import NavBar from "./Navbar";
-import Tasks from "./Tasks/Tasks";
+import Ex1 from "./Ex1/Ex1";
 
 const App = () => {
     // const [page, setPage] = useState('tasks');
-    const pageSelectionHandler = () => {
-        // setPage(newPage)
-        // console.log(newPage)
-    }
     // let content;
     // switch (page) {
     //     case 'tasks':
@@ -20,9 +15,10 @@ const App = () => {
 
     return(
       <div>
-          <NavBar selector={pageSelectionHandler}/>
+          {/*<NavBar selector={pageSelectionHandler}/>*/}
           {/*<ExpensesApp></ExpensesApp>*/}
-          <Tasks></Tasks>
+          {/*<Tasks></Tasks>*/}
+          <Ex1></Ex1>
       </div>
     )
 }
