@@ -1,5 +1,6 @@
 import './index.css'
 import Ex1 from "./Ex1/Ex1";
+import {Fragment} from "react";
 
 const App = () => {
     // const [page, setPage] = useState('tasks');
@@ -14,12 +15,12 @@ const App = () => {
     // }
 
     return(
-      <div>
+      <Fragment>
           {/*<NavBar selector={pageSelectionHandler}/>*/}
           {/*<ExpensesApp></ExpensesApp>*/}
           {/*<Tasks></Tasks>*/}
           <Ex1></Ex1>
-      </div>
+      </Fragment>
     )
 }
 

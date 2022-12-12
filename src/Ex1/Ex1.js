@@ -1,6 +1,6 @@
 import AddUser from "./components/Users/AddUser";
 import UsersList from "./components/Users/UsersList";
-import {useState} from "react";
+import {Fragment, useState} from "react";
 
 const Ex1 = () => {
     const [usersList, setUsersList] = useState([
@@ -21,10 +21,10 @@ const Ex1 = () => {
     }
 
     return(
-      <div className={"test"}>
+      <Fragment >
           <AddUser addUser={addUserHandler}/>
           <UsersList users={usersList} onDeletedItem={deleteItemHandler}/>
-      </div>
+      </Fragment>
 
     )
 }
