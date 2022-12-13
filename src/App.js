@@ -1,6 +1,6 @@
 import './index.css'
-import Ex1 from "./Ex1/Ex1";
 import {Fragment} from "react";
+import DummyLogin from "./DummyLogin/DummyLogin";
 
 const App = () => {
     // const [page, setPage] = useState('tasks');
@@ -19,7 +19,8 @@ const App = () => {
           {/*<NavBar selector={pageSelectionHandler}/>*/}
           {/*<ExpensesApp></ExpensesApp>*/}
           {/*<Tasks></Tasks>*/}
-          <Ex1></Ex1>
+          {/*<Ex1></Ex1>*/}
+          <DummyLogin/>
       </Fragment>
     )
 }
