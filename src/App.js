@@ -1,6 +1,7 @@
 import './index.css'
 import {Fragment} from "react";
 import DummyLogin from "./DummyLogin/DummyLogin";
+import {AuthContextProvider} from "./DummyLogin/context/auth-context";
 
 const App = () => {
     // const [page, setPage] = useState('tasks');
@@ -20,7 +21,9 @@ const App = () => {
           {/*<ExpensesApp></ExpensesApp>*/}
           {/*<Tasks></Tasks>*/}
           {/*<Ex1></Ex1>*/}
-          <DummyLogin/>
+          <AuthContextProvider>
+              <DummyLogin/>
+          </AuthContextProvider>
       </Fragment>
     )
 }
