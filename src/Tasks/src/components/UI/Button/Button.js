@@ -11,7 +11,7 @@ import styles from './Button.module.css'; // syntax that specifies we want to us
 //   box-shadow: 0 0 4px rgba(0, 0, 0, 0.26);
 //   cursor: pointer;
 //
-//   @media (min-width: 768px) {
+//   @assets (min-width: 768px) {
 //     width: auto
 //   }
 //

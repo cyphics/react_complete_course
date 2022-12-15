@@ -2,6 +2,7 @@ import './index.css'
 import {Fragment} from "react";
 import DummyLogin from "./DummyLogin/DummyLogin";
 import {AuthContextProvider} from "./DummyLogin/context/auth-context";
+import FoodOrder from "./FoodOrder/FoodOrder";
 
 const App = () => {
     // const [page, setPage] = useState('tasks');
@@ -21,9 +22,10 @@ const App = () => {
           {/*<ExpensesApp></ExpensesApp>*/}
           {/*<Tasks></Tasks>*/}
           {/*<Ex1></Ex1>*/}
-          <AuthContextProvider>
-              <DummyLogin/>
-          </AuthContextProvider>
+          {/*<AuthContextProvider>*/}
+          {/*    <DummyLogin/>*/}
+          {/*</AuthContextProvider>*/}
+          <FoodOrder></FoodOrder>
       </Fragment>
     )
 }
