@@ -5,7 +5,7 @@ const MealItemForm = (props) => {
     return (
       <form action={"submit"} className={styles.form}>
           <Input label={"Amount"} input={{
-              id: 'amount',
+              id: 'amount_' + props.id,
               type: 'number',
               min: 1,
               max: 5,
