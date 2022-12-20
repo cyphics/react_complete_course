@@ -1,12 +1,17 @@
 import styles from './HeaderCartButton.module.css'
 import CartIcon from "./CartIcon";
-const HeaderCartButton = () => {
+import {Fragment} from "react";
+
+const HeaderCartButton = (props) => {
+
     return (
-      <button className={styles.button}>
-          <span className={styles.icon}><CartIcon/></span>
-          <span>Your Cart</span>
-          <span className={styles.amount}>0</span>
-      </button>
+      <Fragment>
+          <button onClick={props.onClick} className={styles.button}>
+              <span className={styles.icon}><CartIcon/></span>
+              <span>Your Cart</span>
+              <span className={styles.amount}>0</span>
+          </button>
+      </Fragment>
     )
 }
 
