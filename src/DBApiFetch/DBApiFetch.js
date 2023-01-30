@@ -2,6 +2,9 @@ import React, {useCallback, useEffect, useState} from 'react';
 
 import MoviesList from './components/MoviesList';
 import './App.css';
+import AddMovie from "./components/AddMovie";
+
+const firebase_url = "https://react-course-fd4f6-default-rtdb.europe-west1.firebasedatabase.app/";
 
 function DBApiFetch() {
     const [movies, setMovies] = useState([]);
@@ -11,20 +14,22 @@ function DBApiFetch() {
     const fetchMoviesHandler = useCallback(async () => {
         setIsLoading(true);
         try {
-            const response = await fetch('https://swapi.dev/api/films/')
+            const response = await fetch(firebase_url + 'movies.json')
             if (!response.ok) {
                 throw new Error(response.statusMessage);
             }
             const data = await response.json();
-            const transformedMovies = data.results.map(movieData => {
-                return {
-                    id: movieData.episode_id,
-                    title: movieData.title,
-                    openingText: movieData.opening_crawl,
-                    releaseData: movieData.release_date
-                }
-            });
-            setMovies(transformedMovies);
+            const loadedMovies = [];
+            for (const key in data) {
+                const movie = data[key];
+                loadedMovies.push({
+                    id: key,
+                    title: movie.title,
+                    openingText: movie.openingText,
+                    releaseDate: movie.releaseDate
+                })
+            }
+            setMovies(loadedMovies);
         } catch (error) {
             setError(error.message);
         }
@@ -35,6 +40,17 @@ function DBApiFetch() {
         fetchMoviesHandler();
     }, [fetchMoviesHandler])
 
+    async function addMovieHandler(movie) {
+        const response = await fetch(firebase_url + 'movies.json', {
+            method: 'POST',
+            body: JSON.stringify(movie),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        console.log(data);
+    }
 
     let content = <p>Found no movie.</p>
     if (movies.length > 0) {
@@ -49,6 +65,9 @@ function DBApiFetch() {
 
     return (
       <React.Fragment>
+          <section>
+              <AddMovie onAddMovie={addMovieHandler}/>
+          </section>
           <section>
               <button onClick={fetchMoviesHandler}>Fetch Movies</button>
           </section>
