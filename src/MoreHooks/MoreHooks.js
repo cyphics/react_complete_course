@@ -16,7 +16,10 @@ function MoreHooks() {
     setTasks(loadedTasks);
   }, [])
 
-  const {isLoading, error, sendRequest: fetchTasks} = useHttp({ url: FIREBASE_URL + 'tasks.json', }, transformTask);
+  const {isLoading, error, sendRequest: fetchTasks} = useHttp(
+    { url: FIREBASE_URL + 'tasks.json', }, // should stull use memo to avoid loop
+    transformTask
+  );
 
   useEffect(() => {
     fetchTasks();
