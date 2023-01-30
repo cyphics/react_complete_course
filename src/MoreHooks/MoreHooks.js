@@ -1,40 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
 import Tasks from './components/Tasks/Tasks';
 import NewTask from './components/NewTask/NewTask';
 import {FIREBASE_URL} from "../constants";
+import useHttp from "./hooks/use-http";
 
 function MoreHooks() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [tasks, setTasks] = useState([]);
 
-  const fetchTasks = async (taskText) => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await fetch(
-        FIREBASE_URL + 'tasks.json'
-      );
-
-      if (!response.ok) {
-        throw new Error('Request failed!');
-      }
-
-      const data = await response.json();
-
-      const loadedTasks = [];
-
-      for (const taskKey in data) {
-        loadedTasks.push({ id: taskKey, text: data[taskKey].text });
-      }
-
-      setTasks(loadedTasks);
-    } catch (err) {
-      setError(err.message || 'Something went wrong!');
+  const transformTask = useCallback(taskObj => {
+    const loadedTasks = [];
+    for (const taskKey in taskObj) {
+      loadedTasks.push({ id: taskKey, text: taskObj[taskKey].text });
     }
-    setIsLoading(false);
-  };
+    setTasks(loadedTasks);
+  }, [])
+
+  const {isLoading, error, sendRequest: fetchTasks} = useHttp({ url: FIREBASE_URL + 'tasks.json', }, transformTask);
 
   useEffect(() => {
     fetchTasks();
