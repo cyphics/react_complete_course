@@ -6,6 +6,7 @@ import FoodOrder from "./FoodOrder/FoodOrder";
 import DBApiFetch from "./DBApiFetch/DBApiFetch";
 import CustomHooks from "./CustomHooks/CustomHooks";
 import MoreHooks from "./MoreHooks/MoreHooks";
+import Forms from "./Forms/Forms";
 
 
 const App = () => {
@@ -32,7 +33,8 @@ const App = () => {
           {/*<FoodOrder></FoodOrder>*/}
           {/*<DBApiFetch/>*/}
           {/*<CustomHooks/>*/}
-          <MoreHooks/>
+          {/*<MoreHooks/>*/}
+          <Forms/>
       </Fragment>
     )
 }
