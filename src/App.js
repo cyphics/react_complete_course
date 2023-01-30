@@ -5,6 +5,8 @@ import {AuthContextProvider} from "./DummyLogin/context/auth-context";
 import FoodOrder from "./FoodOrder/FoodOrder";
 import DBApiFetch from "./DBApiFetch/DBApiFetch";
 import CustomHooks from "./CustomHooks/CustomHooks";
+import MoreHooks from "./MoreHooks/MoreHooks";
+
 
 const App = () => {
     // const [page, setPage] = useState('tasks');
@@ -29,7 +31,8 @@ const App = () => {
           {/*</AuthContextProvider>*/}
           {/*<FoodOrder></FoodOrder>*/}
           {/*<DBApiFetch/>*/}
-          <CustomHooks/>
+          {/*<CustomHooks/>*/}
+          <MoreHooks/>
       </Fragment>
     )
 }
