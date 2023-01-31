@@ -1,4 +1,5 @@
 import SimpleInput from './components/SimpleInput';
+import './index.css'
 
 function Forms() {
   return (
