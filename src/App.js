@@ -30,11 +30,11 @@ const App = () => {
           {/*<AuthContextProvider>*/}
           {/*    <DummyLogin/>*/}
           {/*</AuthContextProvider>*/}
-          {/*<FoodOrder></FoodOrder>*/}
+          <FoodOrder/>
           {/*<DBApiFetch/>*/}
           {/*<CustomHooks/>*/}
           {/*<MoreHooks/>*/}
-          <Forms/>
+          {/*<Forms/>*/}
       </Fragment>
     )
 }
