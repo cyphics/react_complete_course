@@ -13,7 +13,7 @@ const AvailableMeals = () => {
         const loadedMeals = [];
         const fetchMeals = async () => {
             // await new Promise(r => setTimeout(r, 2000));
-            const response = await fetch(FIREBASE_URL + 'meals.')
+            const response = await fetch(FIREBASE_URL + 'meals.json')
             if (!response.ok) {
                 throw new Error(response.statusMessage);
             }
