@@ -3,11 +3,8 @@ import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import {Fragment, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {uiActions} from "./store/ui-slice";
 import Notification from "./components/UI/Notification";
-import {sendCartData} from "./store/cart-slice";
-
-const FIREBASE_URL = 'https://react-course-fd4f6-default-rtdb.europe-west1.firebasedatabase.app/'
+import {fetchCartData, sendCartData} from "./store/cart-actions";
 
 let isInitial = true;
 
@@ -17,6 +14,13 @@ function App() {
 
     const notification = useSelector(state => state.ui.notification);
     const cart = useSelector(state => state.cart);
+    const cartHasChanged = useSelector(state => state.cart.hasChanged);
+
+    useEffect(() => {
+        console.log('Fetch cart data')
+        isInitial = true;
+        dispatch(fetchCartData());
+    }, [dispatch]);
 
     useEffect(() => {
         if (isInitial) {
@@ -24,9 +28,10 @@ function App() {
             return;
         }
 
-        dispatch(sendCartData(cart));
+        if (cartHasChanged)
+            dispatch(sendCartData(cart));
 
-        // This is how you deal with redux and async logic
+        // This is how you deal with redux and async logic inside component
         //     const sendCartData = async () => {
         //         dispatch(uiActions.showNotification({
         //             status: 'pending', title: 'Sending...', message: 'Sending cart data!',
@@ -49,7 +54,7 @@ function App() {
         //             status: 'error', title: 'Error!', message: error.message,
         //         }));
         //     });
-    }, [cart, dispatch])
+    }, [cart, cartHasChanged, dispatch])
 
     return (<Fragment>
         {notification &&
